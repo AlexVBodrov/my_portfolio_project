@@ -1,0 +1,38 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %} Main. Portfolio {% endblock %}
+
+
+    {% block content %}
+        <div> Main screen
+        <h1> My Portfolio</h1>
+    </div>
+    <div>
+        <br><br>
+        projects
+            <h2>Мои проекты</h2>
+
+        {% for project in projects %}
+        <hr>
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.descriptions }}</p>
+            <p>{{ project.text }}</p>
+            <p><img src="{{ project.image.url }}" alt="{{ project.title }}"></p>
+            <p>{{ project.git_hub_url }}</p>
+        <br>
+
+        {% endfor %}
+
+    </div>
+    {% endblock %}
+
+    {% block footer %}{% endblock %}
+
+
+
+
+
+
+</body>
+</html>
