@@ -1,16 +1,15 @@
 {% extends 'portfolio/base.html' %}
 {% load static %}
 
-{% block title %} Main. Portfolio {% endblock %}
+{% block title %} Main. Current Dollar {% endblock %}
 
 
     {% block content %}
     Main screen
-    <h1> My Portfolio</h1>
+    <h1> Current Dollar </h1>
 
         <br><br>
-        projects
-            <h2>Мои проекты</h2>
+
     {% if show_form %}
         <form method="POST">
             {% csrf_token %}
@@ -20,7 +19,7 @@
         <input type="submit">
         </form>
     {% else %}
-    <h4>{{ name }} ваш возраст {{ age }}</h4>
+    <h4>{{ amount }} рублей в долларах по курсу на данный момент это :<br>{{ currency }} долларов</h4>
     {% endif %}
 
     {% endblock %}

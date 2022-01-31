@@ -1,0 +1,36 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %} Main. Age calculator {% endblock %}
+
+
+    {% block content %}
+    Main screen
+    <h1> My Portfolio</h1>
+
+        <br><br>
+        projects
+            <h2>Мои проекты</h2>
+    {% if show_form %}
+        <form method="POST">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+        <input type="submit">
+        </form>
+    {% else %}
+    <h4>{{ name }} ваш возраст {{ date_birth }}</h4>
+    {% endif %}
+
+    {% endblock %}
+
+    {% block footer %}{% endblock %}
+
+
+
+
+
+
+</body>
+</html>
