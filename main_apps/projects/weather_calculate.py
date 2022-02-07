@@ -4,6 +4,8 @@ from pyowm import OWM
 from main_apps.settings import BASE_DIR
 # change languages = ru
 from pyowm.utils.config import get_default_config
+
+
 config_dict = get_default_config()
 config_dict['language'] = 'ru'
 
@@ -24,11 +26,11 @@ def get_weather_at_city(city):
     observation = mgr.weather_at_place(city)
     w = observation.weather
     temperature = w.temperature('celsius')['temp']
+    wind = w.wind()['speed']
     status = w.detailed_status
-    return f"В городе {city} температура = {temperature} градусов по Цельсию и статус {status}"
+    return f"В городе {city} температура {temperature} градусов по Цельсию и {status},скорость ветра {wind}"
 
 
 if __name__ == '__main__':
     place = input("Укажите город: ")
     print(get_weather_at_city(place))
-
