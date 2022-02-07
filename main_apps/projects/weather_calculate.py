@@ -1,11 +1,20 @@
-import pyowm
+import json
+import os
 from pyowm import OWM
+from main_apps.settings import BASE_DIR
 # change languages = ru
 from pyowm.utils.config import get_default_config
 config_dict = get_default_config()
 config_dict['language'] = 'ru'
 
-owm = OWM('b3e3f2a737d2967e2851a9892592d8c7')
+
+with open(
+    os.path.join(BASE_DIR, "tmp", "secrets", "api_wh.json"), "r"
+) as secrets_api:
+    api_wh = json.load(secrets_api)
+
+
+owm = OWM(api_wh["api_key"])
 mgr = owm.weather_manager()
 
 
