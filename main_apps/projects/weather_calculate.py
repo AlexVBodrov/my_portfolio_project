@@ -28,7 +28,7 @@ def get_weather_at_city(city):
     temperature = w.temperature('celsius')['temp']
     wind = w.wind()['speed']
     status = w.detailed_status
-    return f"В городе {city} температура {temperature} градусов по Цельсию и {status},скорость ветра {wind}"
+    return f"В городе {city} температура {temperature} °C и {status},скорость ветра {wind}"
 
 
 if __name__ == '__main__':

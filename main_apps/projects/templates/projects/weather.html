@@ -1,0 +1,32 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %} Weather {% endblock %}
+
+{% block content %}
+    Main screen
+    <h1> Weather</h1>
+
+        <br><br>
+        projects
+            <h2>Weather in the City</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+        <input type="submit">
+        </form>
+
+    <h4>{{ weather }}</h4>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+
+
+
+
+
+</body>
+</html>

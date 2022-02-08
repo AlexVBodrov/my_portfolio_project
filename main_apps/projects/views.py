@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from projects.forms import CalculateAge, CalculateCurrency
+from projects.forms import CalculateAge, CalculateCurrency, CalculateWeather
 from projects.calculators import calculate_age, calculate_currency_DOLLAR_RUB
+from projects.weather_calculate import get_weather_at_city
 
 # Create your views here.
+
 
 def age_calculator(request):
     if request.method == 'POST':
@@ -46,3 +48,17 @@ def calculator_currency(request):
             'form': form
         }
         return render(request, 'projects/current_dollar.html', context)
+
+
+def show_weather(request):
+    form = CalculateWeather
+    context = {
+        'form': form
+    }
+    if request.method == 'POST':
+        city = request.POST.get("city")
+        weather = get_weather_at_city(city)
+        context["weather"] = weather
+        return render(request, 'projects/weather.html', context)
+    else:
+        return render(request, 'projects/weather.html', context)
